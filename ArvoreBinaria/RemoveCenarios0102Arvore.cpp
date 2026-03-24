@@ -60,7 +60,7 @@ void rem(Nodo *n, int valor)
 
 	if(filho != NULL){ // nodo com o valor correspondente encontrado
 		if(filho->esq == NULL && filho->dir == NULL){ // nodo folha
-			printf("%d é nodo folha\n",valor);
+			printf("%d Ã© nodo folha\n",valor);
 			if(pai->esq == filho) pai->esq = NULL;
 			if(pai->dir == filho) pai->dir = NULL;
 		}
@@ -74,7 +74,8 @@ void rem(Nodo *n, int valor)
 			if(pai->esq == filho) pai->esq = filho->dir;
 			if(pai->dir == filho) pai->dir = filho->dir;
 		}
-		if(filho->esq != NULL && filho->dir != NULL) // nodo com 2 filhos
+		
+		/*if(filho->esq != NULL && filho->dir != NULL) // nodo com 2 filhos
 		{
 			printf("%d tem dois filhos\n",valor);
 			if(filho->esq->dir==NULL){
@@ -90,7 +91,38 @@ void rem(Nodo *n, int valor)
 				aux->dir = NULL;
 				filho->valor = p->valor;
 			}
-		}
+		}*/
+		
+		
+		if(filho->esq != NULL && filho->dir != NULL){ // Nodo com 2 filhos
+		    printf("%d tem dois filhos, usando sucessor\n", valor);
+		    
+		    Nodo *paiSucessor = filho;
+		    Nodo *sucessor = filho->dir; // Começa indo para a direita
+		    
+		    // Busca o menor valor da subárvore direita (o mais à esquerda possível)
+		    while(sucessor->esq != NULL) {
+		    	paiSucessor = sucessor;
+		    	sucessor = sucessor->esq;
+		    }
+		    
+		    // 1. Substitui o valor do nó que queremos "apagar" pelo valor do sucessor
+		    filho->valor = sucessor->valor;
+		    
+			// 2. Ajusta os ponteiros para remover o nó sucessor original
+			// Se o sucessor for o filho direto da direita:
+			if (paiSucessor == filho) {
+				filho->dir = sucessor->dir;
+			} 
+			// Se o sucessor estiver lá no fundo à esquerda:
+			else {
+				paiSucessor->esq = sucessor->dir; 
+		    }
+		    // 3. Libera a memória do nó que foi movido
+		    free(sucessor);
+	    }
+
+		
 	}
 }
 
