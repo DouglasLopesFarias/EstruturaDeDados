@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -17,12 +16,17 @@ int op;
 Nodo *raiz;
 
 void menu(){
+    if(raiz){
+	    printf("Valor da raiz: %d", raiz->valor);
+	    printf("\n");
+	}
 	printf("01 - Criar a raiz\n");
 	printf("02 - Insere no\n");	
 	printf("03 - Altura \n");
 	printf("04 - Imprimir\n");
 	printf("05 - Sair do sistema\n");
 	printf("Digite uma opção:\n");
+	
 }
 
 void sairDoSistema(){
@@ -86,7 +90,11 @@ int altura(Nodo *n){
 		return -1;
 	}else{
 		int alturaEsquerda = altura(n->esq);
+		printf("valor da esquerda: %d", alturaEsquerda);
+		printf("\n");
 		int alturaDireita  = altura(n->dir);
+		printf("valor da direita: %d", alturaDireita);
+		printf("\n");
 		if(alturaEsquerda > alturaDireita){
 			return alturaEsquerda + 1;
 		}else{
