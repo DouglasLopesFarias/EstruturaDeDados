@@ -90,16 +90,24 @@ int altura(Nodo *n){
 		return -1;
 	}else{
 		int alturaEsquerda = altura(n->esq);
-		printf("valor da esquerda: %d", alturaEsquerda);
+		printf("Valor: %d", n->valor);
+		
+		printf("\nvalor da esquerda: %d", alturaEsquerda);
 		printf("\n");
 		int alturaDireita  = altura(n->dir);
-		printf("valor da direita: %d", alturaDireita);
+		printf("Valor: %d", n->valor);
+		printf("\nvalor da direita: %d", alturaDireita);
+		printf("\n");
+		printf("\Rodou");
+		printf("\n");
 		printf("\n");
 		if(alturaEsquerda > alturaDireita){
 			return alturaEsquerda + 1;
 		}else{
 			return alturaDireita + 1;
-		}		
+		}
+		
+				
 	}
 }
 
