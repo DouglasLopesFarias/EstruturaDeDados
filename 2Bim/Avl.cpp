@@ -127,19 +127,34 @@ short fatorDeBalancemento(Nodo *no){
 	}
 }
 
-Nodo* rotacaoEsquerda(Nodo *r){
-	Nodo *y, *f;
+Nodo* rotacaoEsquerda(Nodo *raiz){
+	Nodo *novaRaiz, *filhoBackup;	
 	
-	y = r->dir;
-	f = y->esq;
+	novaRaiz = raiz->dir;
+	filhoBackup = novaRaiz->esq;	
 	
-	y->esq = r;
-	r->dir = f;
+	novaRaiz->esq = raiz;
+	raiz->dir = filhoBackup;	
 	
-	r->altura = maiorAltura(alturaDoNo(r->esq), alturaDoNo(r->dir)) + 1;
-	y->altura = maiorAltura(alturaDoNo(y->esq), alturaDoNo(y->dir)) + 1;
+	raiz->altura     = maiorAltura(alturaDoNo(raiz->esq), alturaDoNo(raiz->dir)) + 1;
+	novaRaiz->altura = maiorAltura(alturaDoNo(novaRaiz->esq), alturaDoNo(novaRaiz->dir)) + 1;
 	
-	return y;
+	return novaRaiz;
+}
+
+Nodo* rotacaoDireita(Nodo *raiz){
+	Nodo *novaRaiz, *filhoBackup;	
+	
+	novaRaiz = raiz->esq;	
+	filhoBackup = novaRaiz->dir;
+		
+	novaRaiz->dir = raiz;
+	raiz->esq = filhoBackup;
+		
+	raiz->altura     = maiorAltura(alturaDoNo(raiz->esq), alturaDoNo(raiz->dir)) + 1;
+	novaRaiz->altura = maiorAltura(alturaDoNo(novaRaiz->esq), alturaDoNo(novaRaiz->dir)) + 1;
+	
+	return novaRaiz;
 }
 
 
