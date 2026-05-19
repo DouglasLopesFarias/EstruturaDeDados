@@ -157,6 +157,15 @@ Nodo* rotacaoDireita(Nodo *raiz){
 	return novaRaiz;
 }
 
+Nodo* rotacaoDireitaEsquerda(Nodo *raiz){
+	raiz->dir = rotacaoDireita(raiz->dir);
+	return rotacaoEsquerda(raiz);
+}
+
+Nodo* rotacaoEsquerdaDireita(Nodo *raiz){
+	raiz->esq = rotacaoEsquerda(raiz->esq);
+	return rotacaoDireita(raiz);
+}
 
 
 
