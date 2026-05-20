@@ -128,14 +128,21 @@ short fatorDeBalancemento(Nodo *no){
 }
 
 Nodo* rotacaoEsquerda(Nodo *raiz){
-	Nodo *novaRaiz, *filhoBackup;	
+	//== ponteiro para a nova raiz depois de rotacionada
+	//== ponteiro para guardar o filho do lado esquerdo   	
+	Nodo *novaRaiz, *filhoBackup; 
 	
-	novaRaiz = raiz->dir;
-	filhoBackup = novaRaiz->esq;	
+	novaRaiz = raiz->dir; //== a nova raiz e o ponteiro direito da raiz atual
+	filhoBackup = novaRaiz->esq;  //== faz o backup, uma copia do ponteiro do filho do lado esq	
 	
-	novaRaiz->esq = raiz;
-	raiz->dir = filhoBackup;	
+	//== atualiza a nova raiz trazendo a raiz anterior para o lado esquerdo
+	novaRaiz->esq = raiz; 
 	
+	//== pega o backup, a copia do filho do lado esquerdo da nova raiz
+	//== e aloca do lado direito da raiz antiga
+	raiz->dir = filhoBackup; 	
+	
+	//==atualiza a altura depois de rotacionar
 	raiz->altura     = maiorAltura(alturaDoNo(raiz->esq), alturaDoNo(raiz->dir)) + 1;
 	novaRaiz->altura = maiorAltura(alturaDoNo(novaRaiz->esq), alturaDoNo(novaRaiz->dir)) + 1;
 	
