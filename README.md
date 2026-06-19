@@ -10,3 +10,4 @@ Entrega para dia 16/04 da lista de exercicios sobre cenario 03 de remoção do d
 OBS: quesetoes anuladas exercicios 03 e 06 (nao precisa responder) 
 
 Atividade Valendo 3.0 2 BIM Turma 
+https://docs.google.com/forms/d/1Su0CugkBiX9qWtXkOpcbk384qCjQuHR2UUOWAeERO4g/edit?usp=forms_home&ouid=117243654235199676847&ths=true
